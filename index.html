@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" cotent="IE=edge, chrome=1">
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<title>“我们”毕业了</title>
+<meta name="keywords"    content="武汉大学, 新闻院, 新闻与传播学院, 2011级, 2015届, 毕业季">
+<meta name="description" content="武汉大学新闻与传播学院2011级毕业专题网站">
+<meta name="copyright"   content="武汉大学新闻与传播学院">
+<!-- 设计： 王凯伦 -->
+<!-- 编码： 付俊 -->
+<style>
+.spin_wrap{position: absolute; width: 100%; height: 100%; top: 0; left: 0; z-index: 99999; background-color: rgba(0,0,0,0.9); _background-color: #000;}
+.spin_wrap .text{width: 200px; height: 30px; margin: -210px auto 0; text-align: center; font: 14px/30px Microsoft Yahei; color: #fff}
+.spinner{display: block; width: 60px; height: 60px; margin: 210px auto; background-color: #67cf22; -webkit-animation: rotateplane .8s infinite ease-in-out; -moz-animation: rotateplane .8s infinite ease-in-out; animation: rotateplane .8s infinite ease-in-out;}
+@-webkit-keyframes rotateplane{0%{-webkit-transform: perspective(120px)} 50%{-webkit-transform: perspective(120px) rotateY(180deg)} 100%{-webkit-transform: perspective(120px) rotateY(180deg) rotateX(180deg)}}
+@-moz-keyframes rotateplane{0%{-moz-transform: perspective(120px)} 50%{-moz-transform: perspective(120px) rotateY(180deg)} 100%{-moz-transform: perspective(120px) rotateY(180deg) rotateX(180deg)}}
+@keyframes rotateplane{0%{transform: perspective(120px) rotateX(0deg) rotateY(0deg); -webkit-transform: perspective(120px) rotateX(0deg) rotateY(0deg)} 50%{transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg); -webkit-transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg)} 100%{transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg); -webkit-transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg)}}
+@keyframes rotateplane{0%{transform: perspective(120px) rotateX(0deg) rotateY(0deg); -moz-transform: perspective(120px) rotateX(0deg) rotateY(0deg)} 50%{transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg); -moz-transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg)} 100%{transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg); -moz-transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg)}}
+</style>
+</head>
+<body>
+<div class="spin_wrap" id="loading-wrap">
+    <div class="spinner"></div>
+    <div class="text" id="progress">loading...0%...</div>
+</div>
+
+<script>
+/**
+ * 为什么把代码放在这里呢
+ * 主要是为了渲染顺序的问题
+ * 先把该页面的图片等资源加载进来
+ * 用loading页面缓冲UI
+ */ 
+// 七牛云储存地址
+var cloudPrefix = 'http://7te985.com1.z0.glb.clouddn.com/';
+
+var resMap = [
+    'style-index.css',
+    'jquery.fancybox.css',
+    'bg.jpg',
+    '1.jpg',
+    'if1.png',
+    'horse1.png',
+    '2.jpg',
+    '3.jpg', 
+    'play-h.png',
+    'sprites.png',
+    '4.png',
+    'play.png',
+    'persons.png',
+    'show1-1.jpg', 
+    'show1-2.jpg',
+    'show2-1.jpg',
+    'show2-2.jpg',
+    'show2-3.jpg',
+    'showmask.png', 
+    'showlh-1.jpg',
+    'showzzx-1.jpg',
+    'showwkl-1.jpg',
+    'showzly-1.jpg',
+    'showxjy-1.jpg',
+    'card.jpg',
+    'ceremony.jpg',
+    'pics.jpg',
+    'jquery.min.js',
+    'jquery.mousewheel.min.js',
+    'jquery.fancybox.pack.js',
+    'index.js'
+];
+
+var loadPics = function (pathArr, cb) {
+    var len = pathArr.length, i = 0, progress = document.getElementById('progress'),
+        loadOne, loadAll;
+
+    var loadOne = function (url, cb) {
+        if (!url) return;
+        var el, type, arr = url.split('.'), len = arr.length;
+
+        url = cloudPrefix + url;
+
+        if (len <= 1) return;
+        type = arr[len - 1];
+
+        if (type === 'css') {
+            el = document.createElement('link');
+            el.rel = 'stylesheet';
+            el.href = url;
+            el.onload = function(){cb && cb()};
+            document.getElementsByTagName('head')[0].appendChild(el);
+        } else if (type === 'js') {
+            el = document.createElement('script');
+            el.src = url;
+            el.onload = function(){cb && cb()};
+            document.body.appendChild(el);
+        } else {
+            el = new Image();
+            el.onload = function(){cb && cb()};
+            el.src = url;
+        }
+    };
+
+    loadAll = function () {
+        loadOne(pathArr[i++], function () {
+            var per = (100*i/len).toFixed(1);
+            per = parseFloat(per) + '%';
+            progress.innerHTML = 'loading...' + per + '...';
+            if (i < len) {
+                loadAll();
+            } else {
+                cb && cb();
+            }
+        });
+    };
+
+    loadAll();
+};
+
+loadPics(resMap, function () {
+    document.getElementById('loading-wrap').style.display= 'none';
+});
+</script>
+
+<div class="wrap">
+    <div class="page page-1">
+        <img src="http://7te985.com1.z0.glb.clouddn.com/horse1.png" alt="" class="horse">
+        <img src="http://7te985.com1.z0.glb.clouddn.com/if1.png" alt="" class="if-txt">
+    </div>
+    <div class="page page-2">
+        <a href="javascript:;" class="play" title="点击播放视频"></a>
+        <div class="embed">
+            <embed src="http://player.youku.com/player.php/sid/XMTI3MTc0Mzk2OA==/v.swf" allowFullScreen="true" quality="high" width="1000" height="560" align="middle" allowScriptAccess="always" type="application/x-shockwave-flash"></embed>
+        </div>
+    </div>
+    <div class="page page-3"></div>
+    <div class="page page-4" id="slidesPage">
+        <div class="show-wrap">
+            <ul class="cf">
+                <li class="show-1" data-type="design" data-idx="1">
+                    <img src="http://7te985.com1.z0.glb.clouddn.com/show1-1.jpg" alt="">
+                    <p>【设计】BY 连伟林
+                        <a href="javascript:;" title="查看更多">more&gt;&gt;</a>
+                    </p>
+                </li>
+                <li class="show-1" data-type="design" data-idx="17">
+                    <img src="http://7te985.com1.z0.glb.clouddn.com/show1-2.jpg" alt="">
+                    <p>【设计】BY 刁宇翔
+                        <a href="javascript:;" title="查看更多">more&gt;&gt;</a>
+                    </p>
+                </li>
+                <li class="show-2" data-type="photo" data-idx="22">
+                    <img src="http://7te985.com1.z0.glb.clouddn.com/show2-1.jpg" alt="">
+                    <p>【摄影】刁宇翔-水天一孤栈
+                        <a href="javascript:;" title="查看更多">more&gt;&gt;</a>
+                    </p>
+                </li>
+                <li class="show-2" data-type="photo" data-idx="57">
+                    <img src="http://7te985.com1.z0.glb.clouddn.com/show2-2.jpg" alt="">
+                    <p>【摄影】张雪婷-樱花之城
+                        <a href="javascript:;" title="查看更多">more&gt;&gt;</a>
+                    </p>
+                </li>
+                <li class="show-2" data-type="photo" data-idx="60">
+                    <img src="http://7te985.com1.z0.glb.clouddn.com/show2-3.jpg" alt="">
+                    <p>【摄影】蔡瑞琦-如梦,逆光
+                        <a href="javascript:;" title="查看更多">more&gt;&gt;</a>
+                    </p>
+                </li>
+            </ul>
+        </div>
+
+        <div class="s-wrap">
+            <div class="slides">
+                <div class="imgs cf" id="imgs">
+                    <a href="javascript:;" class="prev" title="上一张"></a>
+                    <a href="javascript:;" class="next" title="下一张"></a>
+                    <a href="javascript:;" class="close" title="点击关闭">X</a>
+                    <div id="img-con">
+                        <img src="" height="600"alt="">
+                    </div>
+                    <div id="img-desc">新闻与传播学院2011级毕业作品展</div>
+                    <div class="spin_wrap" id="img-ani">
+                        <div class="spinner_2">
+                            <div class="spinner-container container1">
+                                <div class="circle1"></div>
+                                <div class="circle2"></div>
+                                <div class="circle3"></div>
+                                <div class="circle4"></div>
+                            </div>
+                            <div class="spinner-container container2">
+                                <div class="circle1"></div>
+                                <div class="circle2"></div>
+                                <div class="circle3"></div>
+                                <div class="circle4"></div>
+                            </div>
+                            <div class="spinner-container container3">
+                                <div class="circle1"></div>
+                                <div class="circle2"></div>
+                                <div class="circle3"></div>
+                                <div class="circle4"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="page page-5">
+        <div class="stus">
+            <ul>
+                <li class="lh"><a href="article.html#lh" target="_blank" title="罗昊">罗昊</a></li>
+                <li class="zzx"><a href="article.html#zzx" target="_blank" title="张震西">张震西</a></li>
+                <li class="wkl"><a href="article.html#wkl" target="_blank" title="王凯伦">王凯伦</a></li>
+                <li class="zly"><a href="article.html#zly" target="_blank" title="赵璐阳">赵璐阳</a></li>
+                <li class="xjy"><a href="article.html#xjy" target="_blank" title="谢君怡">谢君怡</a></li>
+            </ul>
+
+            <div class="avar">
+                <img src="http://7te985.com1.z0.glb.clouddn.com/showmask.png" class="mask" alt="">
+                <img src="http://7te985.com1.z0.glb.clouddn.com/showlh-1.jpg" class="lh" alt="">
+                <img src="http://7te985.com1.z0.glb.clouddn.com/showzzx-1.jpg" class="zzx" alt="">
+                <img src="http://7te985.com1.z0.glb.clouddn.com/showwkl-1.jpg" class="wkl" alt="">
+                <img src="http://7te985.com1.z0.glb.clouddn.com/showzly-1.jpg" class="zly" alt="">
+                <img src="http://7te985.com1.z0.glb.clouddn.com/showxjy-1.jpg" class="xjy" alt="">
+            </div>
+        </div>
+    </div>
+    <div class="page page-6">
+        <div class="my-wrap">
+            <a href="javascript:;" class="g-card" title="毕业明信片"></a>
+            <a href="javascript:;" class="g-ceremony" title="毕业典礼"></a>
+            <a href="javascript:;" class="g-pics" title="毕业合影"></a>
+        </div>
+    </div>
+</div>
+<div class="navDots"> 
+    <a href="javascript:;" class="at"></a>
+    <a href="javascript:;"></a>
+    <a href="javascript:;"></a>
+    <a href="javascript:;"></a>
+    <a href="javascript:;"></a>
+    <a href="javascript:;"></a>
+</div>
+
+<!-- baidu 分享 -->
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"1","bdMiniList":["mshare","qzone","tsina","weixin","renren","sqq"],"bdPic":"","bdStyle":"0","bdSize":"16"},"slide":{"type":"slide","bdImg":"2","bdPos":"right","bdTop":"250"}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+</body>
+</html>

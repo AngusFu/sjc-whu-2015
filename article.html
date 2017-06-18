@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <title>【毕业季】优秀毕业生寄语</title>
+    <meta name="keywords"    content="武汉大学, 新闻院, 新闻与传播学院, 2011级, 毕业季">
+    <meta name="description" content="武汉大学新闻与传播学院2011级毕业专题网站">
+    <meta name="copyright"   content="武汉大学新闻与传播学院">
+    <meta name="design"      content="Kailun WANG">
+    <meta name="programmer"  content="Jun FU">
+    <meta http-equiv="X-UA-Compatible" cotent="IE=edge, chrome=1">
+    <link rel="stylesheet" href="http://7te985.com1.z0.glb.clouddn.com/style-article.css">
+</head>
+<body>
+
+<div class="wrap"></div>
+
+<div class="spin_wrap">
+    <div class="spinner"></div>
+    <div class="text">加载中...</div>
+</div>
+
+<script type="text/template" id="tpl">
+    <% var cloudPrefix = 'http://7te985.com1.z0.glb.clouddn.com/'; %>
+    <h1>【毕业季】<%= title%></h1>
+    <div class="info cf">
+        <div class="image">
+            <img src="<%= cloudPrefix + abbr%>.jpg" alt="">
+            <div class="desc"><%= img_desc%></div>
+        </div>
+        <div class="intro cf">
+            <div class="desc"><%= info%></div>
+            <div class="name">——<%= name%></div>
+        </div>
+    </div>
+    <div class="article">
+        <% for (var i = 0, l = article.length; i < l; i++) {
+            var item = article[i], h2 = item['h2'], p = item['p'];
+            if (h2){
+        %>
+                <h2><%= h2%></h2>
+            <% }
+
+            for (var j = 0, m = p.length; j < m; j++) { %>
+                <p><%= p[j]%></p>
+            <% }
+        } %>
+    </div>
+
+    <div class="more">其他文章</div>
+    <ul class="links cf">
+        <% for (var k = 0, n = all.length; k < n; k++) { 
+            var ite = all[k];
+            if (abbr == ite.name) {
+                continue;
+            }
+        %>
+        <li>
+            <a href="javascript:;" shref="#<%= ite.name %>">
+                <img src="<%= cloudPrefix + ite.name %>.jpg" alt="">
+                <span><%= ite.title %></span>
+            </a>
+        </li>
+        <% } %>
+    </ul>
+
+    <div class="footer">&copy;copyright  武汉大学新闻与传播学院 2015</div>
+</script>
+
+<script src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+<script src="http://7te985.com1.z0.glb.clouddn.com/article.js"></script>
+<!-- baidu 分享 -->
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"1","bdMiniList":["mshare","qzone","tsina","weixin","renren","sqq"],"bdPic":"","bdStyle":"0","bdSize":"16"},"slide":{"type":"slide","bdImg":"2","bdPos":"right","bdTop":"250"}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+</body>
+</html>
